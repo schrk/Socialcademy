@@ -2,7 +2,7 @@
 //  PostsList.swift
 //  Socialcademy
 //
-//  Created by Havan on 11/06/24.
+//  Created by schork on 11/06/24.
 //
 
 import SwiftUI
@@ -37,10 +37,14 @@ struct PostsList: View {
                 case let .loaded(posts):
                     List(posts) { post in
                         if searchText.isEmpty || post.contains(searchText) {
-                            PostRow(post: post)
+                            PostRow(
+                                post: post,
+                                deleteAction: viewModel.makeDeleteAction(for: post)
+                            )
                         }
                     }
                     .searchable(text: $searchText)
+                    .animation(.default, value: posts)
                 }
             }
             .navigationTitle("Posts")

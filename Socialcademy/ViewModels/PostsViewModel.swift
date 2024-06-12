@@ -2,7 +2,7 @@
 //  PostsViewModel.swift
 //  Socialcademy
 //
-//  Created by Havan on 11/06/24.
+//  Created by schork on 11/06/24.
 //
 
 import Foundation
@@ -31,11 +31,22 @@ extension PostsViewModel {
             }
         }
     }
+    
+    func deletePosts() {
+        
+    }
 
     func makeCreateAction() -> NewPostForm.CreateAction {
         return { [weak self] post in
             try await self?.postsRepository.create(post)
             self?.posts.value?.insert(post, at: 0)
+        }
+    }
+    
+    func makeDeleteAction(for post: Post) -> PostRow.DeleteAction {
+        return { [weak self] in
+            try await self?.postsRepository.delete(post)
+            self?.posts.value?.removeAll { $0.id == post.id }
         }
     }
 }

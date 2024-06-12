@@ -2,7 +2,7 @@
 //  NewPostForm.swift
 //  Socialcademy
 //
-//  Created by Havan on 11/06/24.
+//  Created by schork on 11/06/24.
 //
 
 import SwiftUI
@@ -24,11 +24,12 @@ struct NewPostForm: View {
                     TextField("Title", text: $post.title)
                     TextField("Author Name", text: $post.authorName)
                 }
+                
                 Section("Content") {
                     TextEditor(text: $post.content)
                         .multilineTextAlignment(.leading)
                 }
-                
+
                 Button(action: createPost) {
                     if state == .working {
                         ProgressView()
