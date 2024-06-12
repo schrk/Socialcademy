@@ -2,7 +2,7 @@
 //  EmptyListView.swift
 //  Socialcademy
 //
-//  Created by Havan on 12/06/24.
+//  Created by schork on 12/06/24.
 //
 
 import SwiftUI
