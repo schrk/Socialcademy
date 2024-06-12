@@ -2,7 +2,7 @@
 //  SocialcademyApp.swift
 //  Socialcademy
 //
-//  Created by Havan on 11/06/24.
+//  Created by schork on 11/06/24.
 //
 
 import SwiftUI
