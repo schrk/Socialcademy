@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct PostsList: View {
-    private var posts = [Post.testPost]
-    
     @StateObject var viewModel = PostsViewModel()
     
     @State private var searchText = ""
@@ -44,7 +42,7 @@ struct PostsList: View {
                     .animation(.default, value: posts)
                 }
             }
-            .navigationTitle("Posts")
+            .navigationTitle(viewModel.title)
             .toolbar {
                 Button {
                     showNewPostForm = true
