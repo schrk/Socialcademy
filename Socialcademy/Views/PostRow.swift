@@ -15,9 +15,7 @@ struct PostRow: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(spacing: .zero) {
-                Text(viewModel.authorName)
-                    .font(.subheadline)
-                    .fontWeight(.medium)
+                AuthorView(author: viewModel.author)
                 
                 Spacer()
                 
@@ -39,14 +37,16 @@ struct PostRow: View {
                 
                 Spacer()
                 
-                Button(role: .destructive, action: {
-                    showConfirmationDialog = true
-                }) {
-                    Label("Delete", systemImage: "trash")
+                if viewModel.canDeletePost {
+                    Button(role: .destructive, action: {
+                        showConfirmationDialog = true
+                    }) {
+                        Label("Delete", systemImage: "trash")
+                    }
                 }
-                .labelStyle(.iconOnly)
-                .buttonStyle(.borderless)
             }
+            .labelStyle(.iconOnly)
+            .buttonStyle(.borderless)
         }
         .confirmationDialog("Are you sure you want to delete this post?", isPresented: $showConfirmationDialog, titleVisibility: .visible) {
             Button("Delete", role: .destructive) {
@@ -54,27 +54,41 @@ struct PostRow: View {
             }
         }
         .alert("Cannot Delete Post", error: $viewModel.error)
-        .padding(.vertical)
+        .padding()
     }
 }
 
 private extension PostRow {
     struct FavoriteButton: View {
-            let isFavorite: Bool
-            let action: () -> Void
-            
-            var body: some View {
-                Button(action: action) {
-                    if isFavorite {
-                        Label("Remove from Favorites", systemImage: "heart.fill")
-                    } else {
-                        Label("Add to Favorites", systemImage: "heart")
-                    }
+        let isFavorite: Bool
+        let action: () -> Void
+        
+        var body: some View {
+            Button(action: action) {
+                if isFavorite {
+                    Label("Remove from Favorites", systemImage: "heart.fill")
+                } else {
+                    Label("Add to Favorites", systemImage: "heart")
                 }
-                .labelStyle(.iconOnly)
-                .buttonStyle(.borderless)
-                .foregroundColor(isFavorite ? .red : .gray)
-                .animation(.default, value: isFavorite)
+            }
+            .foregroundColor(isFavorite ? .red : .gray)
+            .animation(.default, value: isFavorite)
+        }
+    }
+    
+    struct AuthorView: View {
+        let author: User
+        
+        @EnvironmentObject private var factory: ViewModelFactory
+        
+        var body: some View {
+            NavigationLink {
+                PostsList(viewModel: factory.makePostsViewModel(filter: .author(author)))
+            } label: {
+                Text(author.name)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
             }
         }
+    }
 }
