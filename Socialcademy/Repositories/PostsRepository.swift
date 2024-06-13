@@ -10,7 +10,8 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 protocol PostsRepositoryProtocol {
-    func fetchPosts() async throws -> [Post]
+    func fetchAllPosts() async throws -> [Post]
+    func fetchFavoritePosts() async throws -> [Post]
     func create(_ post: Post) async throws
     func delete(_ post: Post) async throws
     func favorite(_ post: Post) async throws
@@ -21,8 +22,16 @@ struct PostsRepository: PostsRepositoryProtocol {
     
     let postsReference = Firestore.firestore().collection("posts_v1")
     
-    func fetchPosts() async throws -> [Post] {
-        let snapshot = try await postsReference
+    func fetchAllPosts() async throws -> [Post] {
+        return try await fetchPosts(from: postsReference)
+    }
+    
+    func fetchFavoritePosts() async throws -> [Post] {
+        return try await fetchPosts(from: postsReference.whereField("isFavorite", isEqualTo: true))
+    }
+    
+    func fetchPosts(from query: Query) async throws -> [Post] {
+        let snapshot = try await query
             .order(by: "timestamp", descending: true)
             .getDocuments()
         return snapshot.documents.compactMap { document in
