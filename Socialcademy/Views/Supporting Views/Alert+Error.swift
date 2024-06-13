@@ -20,15 +20,15 @@ private struct ErrorAlertViewModifier: ViewModifier {
     }
 }
 
+extension View {
+    func alert(_ title: String, error: Binding<Error?>) -> some View {
+        modifier(ErrorAlertViewModifier(title: title, error: error))
+    }
+}
+
 private extension Optional {
     var hasValue: Bool {
         get { self != nil }
         set { self = newValue ? self : nil }
-    }
-}
-
-extension View {
-    func alert(_ title: String, error: Binding<Error?>) -> some View {
-        modifier(ErrorAlertViewModifier(title: title, error: error))
     }
 }
