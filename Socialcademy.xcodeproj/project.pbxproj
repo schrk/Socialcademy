@@ -32,6 +32,8 @@
 		83853B232C1B388D00024D6B /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83853B222C1B388D00024D6B /* ProfileView.swift */; };
 		83853B252C1B38F600024D6B /* FormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83853B242C1B38F600024D6B /* FormViewModel.swift */; };
 		83853B272C1B3D0400024D6B /* PrimaryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83853B262C1B3D0400024D6B /* PrimaryButtonStyle.swift */; };
+		83853B292C1B4CD300024D6B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83853B282C1B4CD300024D6B /* User.swift */; };
+		83853B2B2C1B520400024D6B /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83853B2A2C1B520400024D6B /* ViewModelFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,8 @@
 		83853B222C1B388D00024D6B /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		83853B242C1B38F600024D6B /* FormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewModel.swift; sourceTree = "<group>"; };
 		83853B262C1B3D0400024D6B /* PrimaryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButtonStyle.swift; sourceTree = "<group>"; };
+		83853B282C1B4CD300024D6B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		83853B2A2C1B520400024D6B /* ViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				836FAFF72C18976C00DF4360 /* Post.swift */,
+				83853B282C1B4CD300024D6B /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -178,6 +183,7 @@
 				833B6E8A2C1A1F530094DFC1 /* PostRowViewModel.swift */,
 				83853B1E2C1B380300024D6B /* AuthViewModel.swift */,
 				83853B242C1B38F600024D6B /* FormViewModel.swift */,
+				83853B2A2C1B520400024D6B /* ViewModelFactory.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -283,11 +289,13 @@
 				836FAFFE2C18ACB700DF4360 /* NewPostForm.swift in Sources */,
 				833B6E892C1A19CD0094DFC1 /* Alert+Error.swift in Sources */,
 				83853B1F2C1B380300024D6B /* AuthViewModel.swift in Sources */,
+				83853B2B2C1B520400024D6B /* ViewModelFactory.swift in Sources */,
 				83853B212C1B385600024D6B /* AuthView.swift in Sources */,
 				836FAFFA2C1897E600DF4360 /* PostsList.swift in Sources */,
 				83853B252C1B38F600024D6B /* FormViewModel.swift in Sources */,
 				833B6E862C1A08D40094DFC1 /* EmptyListView.swift in Sources */,
 				83853B1A2C1B2BDA00024D6B /* MainTabView.swift in Sources */,
+				83853B292C1B4CD300024D6B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
